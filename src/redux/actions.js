@@ -6,3 +6,8 @@ export const getAllTodos = () => ({
     type: GET_ALL_TODOS,
     payload: {}
 });
+
+export const addTodo = (todo)=>({
+    type:ADD_TODO,
+    payload:{todo}
+})

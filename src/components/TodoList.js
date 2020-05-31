@@ -22,7 +22,7 @@ const TodoList = ({ todos }) => (
       </tbody>
     </table>
     :
-    <h3>No task added</h3>
+    <p>No task added</p>
     }
   </div>
 );
