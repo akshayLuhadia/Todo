@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TodoList from "./components/TodoList";
-import AddTodo from "./components/TodoForm";
+import AddTodo from "./components/AddTodo";
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";

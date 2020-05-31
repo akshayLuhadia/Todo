@@ -19,6 +19,14 @@ const TodoList = ({ todos }) => (
         </tr>
       </thead>
       <tbody>
+      {todos.map(todo=>{
+        return(
+          <tr>
+          <td>{todo.name}</td>
+          <td>{todo.createDate.toString()}</td>
+          </tr>
+        )
+      })}
       </tbody>
     </table>
     :
@@ -28,8 +36,8 @@ const TodoList = ({ todos }) => (
 );
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return [];
+  const todos = state;
+  return {todos};
 };
 
 export default connect(mapStateToProps)(TodoList);

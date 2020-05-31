@@ -1,27 +1,38 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
 import { connect } from "react-redux";
+import {addTodo} from "../redux/actions"
 
 class AddTodo extends React.Component {
     constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
     }
+    state={
+      name:"",
+      createDate:new Date()
+    };
   render(){
 return (
   <form onSubmit={this.onSubmit}>
       <div>
         <label htmlFor="taskName">Task Name</label>
-        <Field name="taskName" component="input" type="text" />
+        <input type="text" name="name" id="taskName" defaultValue={this.state.name} onChange={this.onChange} required />
       </div>
       <div>
         <label htmlFor="createDate">Create Date</label>
-        <Field name="createDate" component="input" type="text" />
+        {/* input */}
       </div>
       <button type="submit">Submit</button>
     </form>)
 
   }
+
+   onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
     onSubmit(e) {
     e.preventDefault();
     const todo = {
@@ -32,5 +43,9 @@ return (
     this.props.history.push("/");
   }
 }
+
+const mapStateToProps = (state, props) => {
+  return { props };
+};
 
 export default connect(mapStateToProps,{addTodo})(AddTodo);
