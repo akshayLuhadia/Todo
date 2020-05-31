@@ -1,0 +1,34 @@
+.todoList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+.todoList p {
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.todoList th {
+  padding: 15px;
+}
+
+.todoList td {
+  padding: 5px 15px;
+}
+
+.todoList .noPadding td {
+  padding: 0px 10px 0 0 !important;
+}
+
+.number {
+  width: 5%;
+}
+.name {
+  width: 45%;
+}
+.status,
+.action {
+  width: 25%;
+}

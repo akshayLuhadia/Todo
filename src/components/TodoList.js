@@ -1,43 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
-
-const style = {
-  width: "50%",
-  textAlign: "left",
-};
+import "./TodoList.css";
+import Todo from "./Todo";
 
 const TodoList = ({ todos }) => (
-  <div>
-  {todos && todos.length>0? 
-    <table style={style}>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Task Name</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-      {todos.map(todo=>{
-        return(
+  <div className="todoList">
+    {todos && todos.length > 0 ? (
+      <table>
+        <thead>
           <tr>
-          <td>{todo.name}</td>
-          <td>{todo.createDate.toString()}</td>
+            <th className="number">#</th>
+            <th className="name">Task Name</th>
+            <th className="status">Status</th>
+            <th className="action">Action</th>
           </tr>
-        )
-      })}
-      </tbody>
-    </table>
-    :
-    <p>No task added</p>
-    }
+        </thead>
+        <tbody>
+          {todos.map((todo, key) => {
+            return <Todo todo={todo} />;
+          })}
+        </tbody>
+      </table>
+    ) : (
+      <p>No task added</p>
+    )}
   </div>
 );
 
 const mapStateToProps = (state) => {
-  const todos = state;
-  return {todos};
+  const todos = state.todos;
+  return { todos };
 };
 
 export default connect(mapStateToProps)(TodoList);

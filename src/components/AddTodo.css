@@ -1,0 +1,29 @@
+.formContainer {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.top {
+  margin: 20px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nameInput {
+  margin: 0 0 25px 0 !important;
+}
+
+.bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.bottom a {
+  text-decoration: none;
+}
+
+.bottom button {
+  margin: 0 10px;
+}
