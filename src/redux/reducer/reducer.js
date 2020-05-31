@@ -1,25 +1,14 @@
-import { ADD_TODO, GET_ALL_TODOS, UPDATE_TODO } from '../actions/types';
+import { ADD_TODO, GET_ALL_TODOS, UPDATE_TODO } from '../actions';
 
 
-export default function (state = [], action) {
+export default function (state = [1,2,3,4], action) {
     switch (action.type) {
         case GET_ALL_TODOS:
-            return {
-                ...state,
-                products: productsData
-            }
+            console.log("Get all todos");
+            return state;
         case ADD_TODO:
-            return {
-                ...state,
-                products: state.products.map((item) => {
-                    if (item.id === action.payload.product.id) {
-                        return action.payload.product;
-                    }
-                    else {
-                        return item;
-                    }
-                })
-            }
+           console.log("Add todo");
+           return state;
         default:
             return state;
     }

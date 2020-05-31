@@ -6,9 +6,9 @@ const style = {
   textAlign: "left",
 };
 
-const TodoList = ({ products }) => (
+const TodoList = ({ todos }) => (
   <div>
-    <h1>Product List</h1>
+  {todos && todos.length>0? 
     <table style={style}>
       <thead>
         <tr>
@@ -19,18 +19,17 @@ const TodoList = ({ products }) => (
         </tr>
       </thead>
       <tbody>
-        {/* {products && products.length
-          ? products.map((product, index) => {
-              return <Product key={index} product={product} />;
-            })
-          : "No products!"} */}
       </tbody>
     </table>
+    :
+    <h3>No task added</h3>
+    }
   </div>
 );
 
 const mapStateToProps = (state) => {
   console.log(state);
+  return [];
 };
 
 export default connect(mapStateToProps)(TodoList);

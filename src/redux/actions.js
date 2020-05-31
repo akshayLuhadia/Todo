@@ -6,8 +6,3 @@ export const getAllTodos = () => ({
     type: GET_ALL_TODOS,
     payload: {}
 });
-
-export const updateProduct = (todo) => ({
-    type: ADD_TODO,
-    payload: { todo }
-});
