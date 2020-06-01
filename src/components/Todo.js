@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { updateStatus } from "../redux/actions";
 import Chip from "@material-ui/core/Chip";
+import { NavLink } from "react-router-dom";
+import "./Todo.css";
 
 const Todo = ({ todo, updateStatus }) => (
   <tr>
@@ -17,16 +19,18 @@ const Todo = ({ todo, updateStatus }) => (
     <td className="action">
       <tr className="noPadding">
         <td>
-          <Chip
-            variant="outlined"
-            size="small"
-            label="Edit"
-            clickable
-            color="primary"
-          />
+          <NavLink to={`/EditTodo/${todo.id}`}>
+            <Chip
+              variant="outlined"
+              size="small"
+              label="Edit"
+              clickable
+              color="primary"
+            />
+          </NavLink>
         </td>
         {todo.status === 2 ? null : (
-          <td onClick={() => updateStatus(todo.id)}>
+          <td onClick={() => updateStatus(todo)}>
             <Chip
               variant="outlined"
               size="small"

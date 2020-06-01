@@ -29,3 +29,11 @@
 .buttonContainer a {
   text-decoration: none;
 }
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}

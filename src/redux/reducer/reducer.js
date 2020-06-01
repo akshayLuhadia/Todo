@@ -3,6 +3,7 @@ import {
   GET_ALL_TODOS,
   UPDATE_TODO,
   UPDATE_STATUS,
+  CLEAR_TASK,
 } from "../actions";
 
 export default function (state = [], action) {
@@ -13,14 +14,28 @@ export default function (state = [], action) {
     case ADD_TODO:
       return [...state, action.payload.todo];
     case UPDATE_STATUS:
-      let todos = state.map((todo) => {
-        let todoItem = todo;
-        if (todo.id === action.payload) {
-          todoItem.status = 2;
+      return state.map((item) => {
+        if (item.id !== action.payload.id) {
+          return item;
         }
-        return todoItem;
+        return {
+          ...item,
+          status: 2,
+        };
       });
-      return todos;
+    case UPDATE_TODO:
+      return state.map((item) => {
+        if (item.id !== action.payload.id) {
+          return item;
+        }
+        return {
+          ...action.payload,
+        };
+      });
+    case CLEAR_TASK:
+      return state.filter((item) => {
+        return item.status !== 2;
+      });
     default:
       return state;
   }
