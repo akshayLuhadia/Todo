@@ -3,20 +3,12 @@ import "../App.css";
 import TodoList from "./TodoList";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Link,
-} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearTasks } from "../redux/actions";
 import "./MainContainer.css";
 
 class MainContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="MainContainer">

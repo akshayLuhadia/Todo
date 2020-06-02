@@ -88,7 +88,6 @@ class EditTodo extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
   let id = Number(props.match.params.id);
   let itemArr = state.todos.filter((item) => {
     return id === item.id;

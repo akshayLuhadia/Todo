@@ -5,9 +5,9 @@ import Chip from "@material-ui/core/Chip";
 import { NavLink } from "react-router-dom";
 import "./Todo.css";
 
-const Todo = ({ todo, updateStatus }) => (
+const Todo = ({ todo, number, updateStatus }) => (
   <tr>
-    <td className="number">{todo.id}</td>
+    <td className="number">{number}</td>
     <td className="name">{todo.name}</td>
     <td className="status">
       {todo.status === 1 ? (

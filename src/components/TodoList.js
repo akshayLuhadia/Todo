@@ -17,7 +17,7 @@ const TodoList = ({ todos }) => (
         </thead>
         <tbody>
           {todos.map((todo, key) => {
-            return <Todo todo={todo} />;
+            return <Todo todo={todo} number={key + 1} />;
           })}
         </tbody>
       </table>
