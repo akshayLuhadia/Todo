@@ -3,9 +3,15 @@ import "../App.css";
 import TodoList from "./TodoList";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Link,
+} from "react-router-dom";
 import { connect } from "react-redux";
 import { clearTasks } from "../redux/actions";
+import "./MainContainer.css";
 
 class MainContainer extends React.Component {
   constructor(props) {
@@ -13,7 +19,7 @@ class MainContainer extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="MainContainer">
         <div className="buttonContainer">
           <div className="left">
             <NavLink to={"/AddTodo"}>
@@ -24,13 +30,9 @@ class MainContainer extends React.Component {
           </div>
           {this.props.todosCount ? (
             <div className="right">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => this.props.clearTasks()}
-              >
-                Clear done tasks
-              </Button>
+              <Link onClick={() => this.props.clearTasks()}>
+                Clear all the done tasks
+              </Link>
             </div>
           ) : null}
         </div>

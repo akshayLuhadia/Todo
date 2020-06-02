@@ -16,6 +16,7 @@ class AddTodo extends React.Component {
   state = {
     name: "",
     createDate: new Date().toLocaleDateString(),
+    error: false,
   };
   render() {
     return (
@@ -34,6 +35,8 @@ class AddTodo extends React.Component {
               }}
               variant="outlined"
               onChange={this.onChange}
+              error={this.state.error}
+              helperText={this.state.error ? "Name cannot be empty" : ""}
             />
             <TextField
               name="createDate"
@@ -62,19 +65,23 @@ class AddTodo extends React.Component {
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, error: false });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const todo = {
-      name: this.state.name,
-      createDate: this.state.createDate,
-      status: 1,
-      id: this.props.todosLength + 1,
-    };
-    this.props.addTodo(todo);
-    this.props.history.push("/");
+    if (this.state.name === "") {
+      this.setState({ error: true });
+    } else {
+      const todo = {
+        name: this.state.name,
+        createDate: this.state.createDate,
+        status: 1,
+        id: this.props.todosLength + 1,
+      };
+      this.props.addTodo(todo);
+      this.props.history.push("/");
+    }
   }
 }
 

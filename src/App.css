@@ -7,14 +7,7 @@
 }
 
 .AppContainer {
-  background-color: #ffffff;
   width: 75%;
-  margin: 10px;
-  text-align: center;
-  font-size: 15px;
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .buttonContainer,
@@ -25,8 +18,10 @@
 
 .buttonContainer {
   margin: 20px;
+  justify-content: space-between;
 }
-.buttonContainer a {
+
+.left a {
   text-decoration: none;
 }
 
@@ -36,4 +31,8 @@
 
 .right {
   justify-content: flex-end;
+}
+
+.right a {
+  text-decoration: underline;
 }
