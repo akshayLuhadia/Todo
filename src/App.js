@@ -1,37 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import TodoList from "./components/TodoList";
+import React from "react";
+import "./App.css";
+import MainContainer from "./components/MainContainer";
 import AddTodo from "./components/AddTodo";
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import EditTodo from "./components/EditTodo";
 
 function App() {
   return (
     <div className="App">
-    <Router>
-      <div className="AppContainer">
-        <Route exact path="/" component={MainContainer} />
-        <Route path="/AddTodo" component={AddTodo} />
-      </div>
-    </Router>
+      <Router>
+        <div className="AppContainer">
+          <Route exact path="/" component={MainContainer} />
+          <Route path="/AddTodo" component={AddTodo} />
+          <Route path="/EditTodo/:id" component={EditTodo} />
+        </div>
+      </Router>
     </div>
   );
-}
-
-function MainContainer(){
-  return (<div>
-        <div className="buttonContainer">
-        <NavLink to={"/AddTodo"}>
-          <Button variant="contained" color="primary">ADD TASK</Button>
-        </NavLink>
-        </div>
-        <Divider light />
-        <div className="todoListContainer">
-          <TodoList />
-        </div>
-      </div>)
 }
 
 export default App;

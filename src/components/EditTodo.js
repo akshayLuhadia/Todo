@@ -3,19 +3,19 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { connect } from "react-redux";
-import { addTodo } from "../redux/actions";
+import { updateTodo } from "../redux/actions";
 import "./AddTodo.css";
 import { NavLink } from "react-router-dom";
 
-class AddTodo extends React.Component {
+class EditTodo extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   state = {
-    name: "",
-    createDate: new Date().toLocaleDateString(),
+    name: this.props.name,
+    createDate: this.props.createDate,
     error: false,
   };
   render() {
@@ -34,6 +34,7 @@ class AddTodo extends React.Component {
                 shrink: true,
               }}
               variant="outlined"
+              defaultValue={this.state.name}
               onChange={this.onChange}
               error={this.state.error}
               helperText={this.state.error ? "Name cannot be empty" : ""}
@@ -48,6 +49,7 @@ class AddTodo extends React.Component {
                 shrink: true,
               }}
               onChange={this.onChange}
+              defaultValue={new Date(this.state.createDate)}
             />
           </div>
           <Divider light />
@@ -56,7 +58,7 @@ class AddTodo extends React.Component {
               <Button variant="contained">CANCEL</Button>
             </NavLink>
             <Button variant="contained" color="primary" onClick={this.onSubmit}>
-              CREATE
+              UPDATE
             </Button>
           </div>
         </form>
@@ -77,16 +79,26 @@ class AddTodo extends React.Component {
         name: this.state.name,
         createDate: this.state.createDate,
         status: 1,
-        id: this.props.todosLength + 1,
+        id: this.props.id,
       };
-      this.props.addTodo(todo);
+      this.props.updateTodo(todo);
       this.props.history.push("/");
     }
   }
 }
 
 const mapStateToProps = (state, props) => {
-  return { todosLength: state.todos.length };
+  let id = Number(props.match.params.id);
+  let itemArr = state.todos.filter((item) => {
+    return id === item.id;
+  });
+  let item = {
+    name: "",
+    createDate: new Date().toLocaleDateString(),
+    status: 1,
+    id: state.todos.length + 1,
+  };
+  return itemArr.length > 0 ? itemArr[0] : item;
 };
 
-export default connect(mapStateToProps, { addTodo })(AddTodo);
+export default connect(mapStateToProps, { updateTodo })(EditTodo);
